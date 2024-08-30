@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Window x:Class="AutoSuggestBoxTest.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d">
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Popup x:Name="uiPopup"
+               HorizontalOffset="10"
+               VerticalOffset="40">
+            <Grid Width="100"
+                  Height="100"
+                  Background="Blue">
+                <TextBlock Text="This should show above the AutoSuggestBoxFlyout" />
+            </Grid>
+        </Popup>
+        <AutoSuggestBox x:Name="myAutoSuggestBox"
+                        Width="200"
+                        LostFocus="myAutoSuggestBox_LostFocus"
+                        PlaceholderText="Type here to search..."
+                        TextChanged="myAutoSuggestBox_TextChanged">
+            <AutoSuggestBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock PointerEntered="myAutoSuggestBox_PointerEntered" Text="{Binding}" />
+                </DataTemplate>
+            </AutoSuggestBox.ItemTemplate>
+        </AutoSuggestBox>
+    </Grid>
+</Window>
